@@ -1,2 +1,9 @@
-package solid.isp;public interface UPIPayments {
+package solid.isp;
+
+public interface UPIPayments {
+
+    void payMoney();
+    void getScratchCard();
+    void getCashBackAsCreditBalance();
+
 }
