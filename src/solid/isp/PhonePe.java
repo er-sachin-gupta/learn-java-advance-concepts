@@ -10,9 +10,4 @@ public class PhonePe implements UPIPayments {
     public void getScratchCard() {
 
     }
-
-    @Override
-    public void getCashBackAsCreditBalance() {
-        // Not Applicable for PhonePe
-    }
 }

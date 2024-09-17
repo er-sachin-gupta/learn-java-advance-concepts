@@ -1,6 +1,6 @@
 package solid.isp;
 
-public class GooglePay implements UPIPayments {
+public class GooglePay implements UPIPayments, CashBackManager {
     @Override
     public void payMoney() {
 
