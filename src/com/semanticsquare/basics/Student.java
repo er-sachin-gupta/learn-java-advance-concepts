@@ -1,8 +1,7 @@
-package com.semanticsquare;
+package com.semanticsquare.basics;
 
 public class Student {
-    int id;
-    id = 1000; // initialize at this level is not permitted
+    int id = 1000;
     /*
     Solution to either assign int id =1000 on line 4 or inside method make this assignment like on line 11
      */
