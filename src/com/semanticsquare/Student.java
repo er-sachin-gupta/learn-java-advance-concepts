@@ -1,12 +1,14 @@
 package com.semanticsquare;
 
 public class Student {
-    int id; // Make it global variable
+    int id;
+    id = 1000; // initialize at this level is not permitted
+    /*
+    Solution to either assign int id =1000 on line 4 or inside method make this assignment like on line 11
+     */
 
     void compute() {
-//        int id = 1000; Another Fix
-        int nextId = id + 1; // Giving error because id variable has not been initialized manually
-        // and also as it is a local variable it has not been initialized automatically, if it will be a global or static variable it will surely get default value
+        int nextId = id + 1;
         System.out.println(id);
         System.out.println(nextId);
     }
