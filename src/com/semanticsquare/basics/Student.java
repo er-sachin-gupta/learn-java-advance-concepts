@@ -17,7 +17,16 @@ public class Student {
 //    char degree = '\u0000';
     char degree = 'B';
 
+    boolean international = true;
+    double tuitionFees  = 12000.0;
+    double internationalFees  = 5000.0;
+
     void compute() {
+
+        if (international) {
+            tuitionFees = tuitionFees + internationalFees;
+        }
+
         int nextId = id + 1;
         System.out.println("id: " + id);
         System.out.println("nextId: " + nextId);
@@ -27,6 +36,7 @@ public class Student {
         System.out.println("degree : " + degree);
         System.out.println(Character.MAX_VALUE);
         System.out.println(Character.MIN_VALUE);
+        System.out.println("tuitionFees : " + tuitionFees);
     }
 
     public static void main(String[] args) {
