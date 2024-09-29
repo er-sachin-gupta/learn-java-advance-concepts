@@ -1,6 +1,7 @@
 package com.semanticsquare.basics;
 
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 
 public class BasicsDemo {
 
@@ -65,8 +66,36 @@ public class BasicsDemo {
         System.out.println("cChar: " + cChar);
     }
 
+    static void arrays() {
+        System.out.println("\nInside Arrays ...");
+        /*int[] scores = new int[4];
+//        int scores[] = new int[4];
+        scores[0] = 90;
+        scores[1] = 70;
+        scores[2] = 80;
+        scores[3] = 100;*/
+//        int[] scores = new int[] {90, 70, 80, 100};
+        int[] scores = {90, 70, 80, 100};
+        System.out.println("Mid-Term1 : " + scores[0]);
+        System.out.println("Mid-Term2 : " + scores[1]);
+        System.out.println("Final : " + scores[2]);
+        System.out.println("Project : " + scores[3]);
+        System.out.println("# exams : " + scores.length);
+
+        Student[] students = new Student[3];
+        students[0] = new Student();
+        students[1] = new Student();
+        students[2] = new Student();
+        students[0].name = "John";
+        students[1].name = "Raj";
+//        students[2].name = "Anita";
+        System.out.println("Student 1: " + students[0].name);
+        System.out.println("Student 2: " + students[1].name);
+        System.out.println("Student 3: " + students[2].name);
+    }
+
     public static void main(String[] args) {
-        primitives();
+//        primitives();
         /*System.out.println(1 - 0.9);
         System.out.println(0.1 + 0.2);
 
@@ -79,6 +108,7 @@ public class BasicsDemo {
         BigDecimal first = new BigDecimal("0.1");
         BigDecimal second = new BigDecimal("0.2");
         System.out.println(first.add(second));*/
-        typeCasting();
+//        typeCasting();
+        arrays();
     }
 }
