@@ -94,6 +94,40 @@ public class BasicsDemo {
         System.out.println("Student 3: " + students[2].name);
     }
 
+    static void threeDimensionalArrays() {
+        System.out.println("\nInside threeDimensionalArrays ...");
+//        int[][][] unitsSold = new int[][][]{
+        int[][][] unitsSold = {
+                { // New York
+                        {0,0,0,0}, // Jan
+                        {0,0,0,0}, // Feb
+                        {0,0,0,0}, // Mar
+                        {0,850,0,0}// Apr
+                },
+                { // San Francisco
+                        {0,0,0,0}, // Jan
+                        {0,0,0,0}, // Feb
+                        {0,0,0,0}, // Mar
+                        {0,0,0,0}  // Apr
+                },
+                {
+                        {0,0,0,0},
+                        {0,0,0,0},
+                        {0,0,0,0},
+                        {0,0,0,0}
+                },
+                {
+                        {0,0,0,0},
+                        {0,0,0,0},
+                        {0,0,0,0},
+                        {0,0,0,0}
+                }
+        };
+
+        System.out.println("unitsSold[0][3][1]: " + unitsSold[0][3][1]);
+    }
+
+
     public static void main(String[] args) {
 //        primitives();
         /*System.out.println(1 - 0.9);
@@ -109,6 +143,7 @@ public class BasicsDemo {
         BigDecimal second = new BigDecimal("0.2");
         System.out.println(first.add(second));*/
 //        typeCasting();
-        arrays();
+//        arrays();
+        threeDimensionalArrays();
     }
 }
