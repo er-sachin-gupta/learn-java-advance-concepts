@@ -127,6 +127,12 @@ public class BasicsDemo {
         System.out.println("unitsSold[0][3][1]: " + unitsSold[0][3][1]);
     }
 
+    static void go (int[] array) {
+        System.out.println("array[0]:" + array[0]);
+        System.out.println("array[1]:" + array[1]);
+        array[1] = 22;
+    }
+
 
     public static void main(String[] args) {
 //        primitives();
@@ -144,6 +150,10 @@ public class BasicsDemo {
         System.out.println(first.add(second));*/
 //        typeCasting();
 //        arrays();
-        threeDimensionalArrays();
+//        threeDimensionalArrays();
+
+        int[] array = {1, 2};
+        go(array);
+        System.out.println("array[1]: " + array[1]);
     }
 }
