@@ -141,6 +141,15 @@ public class BasicsDemo {
         System.out.println("go(short s)");
     }
 
+    static void varArgsOverLoad(boolean b, int i, int j, int k) {
+        System.out.println("\n Inside varArgsOverLoad without VarArgs...");
+    }
+
+    static void varArgsOverLoad(boolean b, int... list) {
+        System.out.println("\n Inside varArgsOverLoad with VarArgs...");
+        System.out.println("list.length: " + list.length);
+    }
+
 
     public static void main(String[] args) {
 //        primitives();
@@ -160,13 +169,17 @@ public class BasicsDemo {
 //        arrays();
 //        threeDimensionalArrays();
 
-        int[] array = {1, 2};
+        /*int[] array = {1, 2};
         go(array);
         System.out.println("array[1]: " + array[1]);
 
         go(1000);
 
         byte b = 22;
-        go(b);
+        go(b);*/
+        varArgsOverLoad(true, 1,2, 3);
+        varArgsOverLoad(true, 1,2, 3,4,5,6,7,8);
+        varArgsOverLoad(false);
+
     }
 }
