@@ -1,8 +1,5 @@
 package com.semanticsquare.basics;
 
-import java.math.BigDecimal;
-import java.sql.SQLOutput;
-
 public class BasicsDemo {
 
     static void primitives() {
@@ -82,16 +79,16 @@ public class BasicsDemo {
         System.out.println("Project : " + scores[3]);
         System.out.println("# exams : " + scores.length);
 
-        Student[] students = new Student[3];
-        students[0] = new Student();
-        students[1] = new Student();
-        students[2] = new Student();
-        students[0].name = "John";
-        students[1].name = "Raj";
-//        students[2].name = "Anita";
-        System.out.println("Student 1: " + students[0].name);
-        System.out.println("Student 2: " + students[1].name);
-        System.out.println("Student 3: " + students[2].name);
+        InstanceStaticVariableStudent[] instanceStaticVariableStudents = new InstanceStaticVariableStudent[3];
+        instanceStaticVariableStudents[0] = new InstanceStaticVariableStudent();
+        instanceStaticVariableStudents[1] = new InstanceStaticVariableStudent();
+        instanceStaticVariableStudents[2] = new InstanceStaticVariableStudent();
+        instanceStaticVariableStudents[0].name = "John";
+        instanceStaticVariableStudents[1].name = "Raj";
+//        instanceStaticVariableStudents[2].name = "Anita";
+        System.out.println("InstanceStaticVariableStudent 1: " + instanceStaticVariableStudents[0].name);
+        System.out.println("InstanceStaticVariableStudent 2: " + instanceStaticVariableStudents[1].name);
+        System.out.println("InstanceStaticVariableStudent 3: " + instanceStaticVariableStudents[2].name);
     }
 
     static void threeDimensionalArrays() {
