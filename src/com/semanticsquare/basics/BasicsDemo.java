@@ -1,3 +1,4 @@
+package com.semanticsquare.basics;
 class BasicsDemo {
     // Adapted from http://www.ntu.edu.sg/home/ehchua/programming/java/J1a_Introduction.html
     static void print() {
@@ -162,6 +163,101 @@ class BasicsDemo {
         System.out.println("('a' + 'b'): " + ('a' +'b')); // 'a' & 'b' are promoted to ints and the respective equivalents 97 & 98 are added
     }
 
+    // Comparison or Relational operators
+    static void comparisonOperators() {
+        System.out.println("\nInside comparisonOperators ...");
+        int age = 20;
+	    /*if (age > 21) {
+			System.out.println("Graduate student");
+		}*/
+        System.out.println("age > 21: " + (age > 21));
+        System.out.println("age >= 21: " + (age >= 21));
+        System.out.println("age < 21: " + (age < 21));
+        System.out.println("age <= 21: " + (age <= 21));
+        System.out.println("age == 21: " + (age == 21)); // equal to (equality operator)
+        System.out.println("age != 21: " + (age != 21)); // not equal to (equality operator)
+
+        boolean isInternational = true;
+        //System.out.println("isInternational <= true: " + (isInternational <= true));
+        System.out.println("isInternational == true: " + (isInternational == true));
+        System.out.println("isInternational != true: " + (isInternational != true));
+
+        Student s1 = new Student(1000, "Dheeru");
+        Student s2 = new Student(1000, "Dheeru");
+        System.out.println("s1 == s2: " + (s1 == s2)); // See object class
+        System.out.println("s1 != s2: " + (s1 != s2));
+
+        update(s1, "John");
+    }
+
+    static boolean update(Student s, String name) {
+        if (s == null) {
+            return false;
+        }
+
+        s.name = name;
+        return true;
+    }
+
+    static void logicalOperators() {
+        System.out.println("\nInside logicalOperators ...");
+        int age = 37;
+        int salary = 85000;
+        boolean hasBadCredit = false;
+
+        // 1. Core (AND, OR, NOT & Operator Chaining)
+
+        if (age > 35 && salary > 90000 || !hasBadCredit) {
+            System.out.println("Loan approved!");
+        } else {
+            System.out.println("Loan not approved!");
+        }
+
+        // 2.
+        //    (a) Left-associative ~ Order of grouping
+        //    (b) Associativity (a && b) && c = a && (b && c)
+        //    Applies to both && and ||
+
+
+        // 3.
+        //    (a) Operator precedence of Logical Operators: Helps with ONLY grouping operations. Not order of execution. (! > && > ||)
+
+        // Other Examples: A && B || C && D = (A && B) || (C && D)
+        //                 A && B && C || D = ((A && B) && C) || D
+
+
+        //    (b) Operator Precedence across logical, comparison and arithmetic
+        //          ! > arithmetic > comparison > &&, ||
+        //    See resources section for complete precedence rules
+
+        // ALWAYS USE PARENTHESIS for READABILITY. Not everyone is aware of precedence rules
+
+        // 4. Use && to avoid NullPointerException
+        Student s1 = new Student(1001, "Raj");
+        update(s1, "Dheeru");
+    }
+
+    static void bitwiseOperators() {
+        System.out.println("\nInside bitwiseOperators ...");
+        int x = 1;
+        int y = 3;
+
+        System.out.println("x & y: " + (x & y));
+        System.out.println("x | y: " + (x | y));
+        System.out.println("x ^ y: " + (x ^ y));
+        System.out.println("~x: " + (~x));
+        System.out.println("true & false: " + (true & false));
+
+        char c1 = 'a'; // U+0061 --> 0110 0001
+        char c2 = 'b'; // U+0062 --> 0110 0010
+        System.out.println("c1 | c2: " + (c1 | c2)); // 0110 0011 --> 99 in decimal
+
+        // Since bitwise work only on Integer types, following will not compile
+        //double d1 = 3.14;
+        //double d2 = 5.15;
+        //System.out.println("d1 | d2: " + (d1 | d2));
+    }
+
     public static void main(String[] args) {
         // Language Basics 1
         //print();
@@ -176,6 +272,9 @@ class BasicsDemo {
         //preAndPost();
         //compoundArithmeticAssignment();
         //isOddOrEven(51);
-        charTypePromotion();
+        //charTypePromotion();
+        //comparisonOperators();
+        //logicalOperators();
+        bitwiseOperators();
     }
 }
