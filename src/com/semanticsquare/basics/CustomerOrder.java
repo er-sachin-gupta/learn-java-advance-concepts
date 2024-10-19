@@ -1,35 +1,49 @@
 package com.semanticsquare.basics;
 
 public class CustomerOrder {
-
-    //Variables
     static int orderNumber = 1000;
-    static double seniorDiscount = 2.0;
-    int quantity = 1;
-    boolean seniorCitizen;
-    double orderAmount;
 
-    public CustomerOrder(int quantity, boolean seniorCitizen) {
-        this.quantity = quantity;
+    static double seniorDiscount = 2.0;
+
+    // Variables that define a customer's order
+    int foodChoice;
+    int drinkChoice;
+    int dessertChoice;
+    String couponCode;
+    boolean seniorCitizen;
+
+    double orderAmount = 0.0;
+
+    public CustomerOrder(int foodChoice, int drinkChoice, int dessertChoice, String couponCode, boolean seniorCitizen) {
+        this.foodChoice = foodChoice;
+        this.drinkChoice = drinkChoice;
+        this.dessertChoice = dessertChoice;
+        this.couponCode = couponCode;
         this.seniorCitizen = seniorCitizen;
 
-        // Step 1: Generate New Order Number
         orderNumber = orderNumber + 1;
     }
 
-    public CustomerOrder(int quantity) {
-        this(quantity, false);
+    public CustomerOrder(int foodChoice, int drinkChoice, int dessertChoice, String couponCode) {
+        this(foodChoice, drinkChoice, dessertChoice, couponCode, false);
     }
 
-    public Double generateOrderBill() {
+    public double generateOrderBill() {
 
-        // Step 2: Compute Order Amount (orderAmount) using price & quantity
-        orderAmount = Menu.price * quantity;
+        // Your logic
+        orderAmount += Menu.getMenuItemPrice(foodChoice);
+        orderAmount += Menu.getMenuItemPrice(drinkChoice);
+        orderAmount += Menu.getMenuItemPrice(dessertChoice);
 
-        // Step 3: Apply discount if customer is a senior citizen
-        if (seniorCitizen)
+        if (orderAmount > 10)
+            orderAmount -= Menu.applyCoupon(couponCode);
+
+        // Apply discount if customer is a senior citizen
+        if (seniorCitizen) {
             orderAmount = orderAmount - seniorDiscount;
+        }
 
         return orderAmount;
     }
+
 }
