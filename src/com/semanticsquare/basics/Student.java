@@ -1,5 +1,5 @@
 package com.semanticsquare.basics;
-class Student {
+/*class Student {
     // variable declarations
     int id;
     String name;
@@ -20,8 +20,8 @@ class Student {
         this.name = name;
         return true;
     }
-}
-/*
+}*/
+
 
 class Student {
     static int studentCount;
@@ -82,4 +82,4 @@ class Student {
         return true;
     }
 }
-*/
+
