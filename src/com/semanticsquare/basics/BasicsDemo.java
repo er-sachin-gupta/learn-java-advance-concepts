@@ -284,6 +284,12 @@ class BasicsDemo {
         return approved;
     }
 
+    // Constant Expression (In the context of switch):
+    // (i) int literals (e.g., 3), string literals ("March"), enum constants (e.g., MARCH)
+    // (ii) Constant variables
+    // (a) final variables that are INITIALIZED +
+    // (b) variable type has to be byte/short/char/int/String
+
     static String getSeason(int month) {
 
         String season = null;
@@ -373,6 +379,7 @@ class BasicsDemo {
 
         String season = getSeason(3);
         //String season = getSeason("March"); // Java 7
+        //String season = getSeason(Month.MARCH);
 
         System.out.println(season);
     }
@@ -420,6 +427,53 @@ class BasicsDemo {
                 break;
             default :
                 season = "unknown";
+                break;
+        }
+
+        return season;
+    }
+
+    enum Month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER}
+
+    static String getSeason(Month month) {
+        String season = null;
+
+        switch (month) {
+            case JANUARY :
+                season = "Spring";
+                break;
+            case FEBRUARY:
+                season = "Spring";
+                break;
+            case MARCH:
+                season = "Spring";
+                break;
+            case APRIL:
+                season = "Summer";
+                break;
+            case MAY:
+                season = "Summer";
+                break;
+            case JUNE:
+                season = "Summer";
+                break;
+            case JULY:
+                season = "Rainy";
+                break;
+            case AUGUST:
+                season = "Rainy";
+                break;
+            case SEPTEMBER:
+                season = "Rainy";
+                break;
+            case OCTOBER:
+                season = "Winter";
+                break;
+            case NOVEMBER:
+                season = "Winter";
+                break;
+            case DECEMBER:
+                season = "Winter";
                 break;
         }
 
