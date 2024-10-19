@@ -1,4 +1,5 @@
 package com.semanticsquare.basics;
+
 class BasicsDemo {
     // Adapted from http://www.ntu.edu.sg/home/ehchua/programming/java/J1a_Introduction.html
     static void print() {
@@ -290,70 +291,49 @@ class BasicsDemo {
     // (a) final variables that are INITIALIZED +
     // (b) variable type has to be byte/short/char/int/String
 
+    // case L -> an expression | block of statements | throw statement
+    // no fall through (safer & compact code)
     static String getSeason(int month) {
 
         String season = null;
 
-		/*
-		if (month == 1) {
-			season = "Spring";
-		} else if (month == 2) {
-			season = "Spring";
-		} else if (month == 3) {
-			season = "Spring";
-		} else if (month == 4) {
-			season = "Summer";
-		} else if (month == 5) {
-			season = "Summer";
-		} else if (month == 6) {
-			season = "Summer";
-		} else if (month == 7) {
-			season = "Rainy";
-		} else if (month == 8) {
-			season = "Rainy";
-		} else if (month == 9) {
-			season = "Rainy";
-		} else if (month == 10) {
-			season = "Winter";
-		} else if (month == 11) {
-			season = "Winter";
-		} else if (month == 12) {
-			season = "Winter";
-		} else {
-			season = "unknown";
-		}
-		*/
-
         switch (month) {
-            case 1: season = "Spring";
-                break;
-            case 2: season = "Spring";
-                break;
-            case 3: season = "Spring";
-                break;
-            case 4: season = "Summer";
-                break;
-            case 5: season = "Summer";
-                break;
-            case 6: season = "Summer";
-                break;
-            case 7: season = "Rainy";
-                break;
-            case 8: season = "Rainy";
-                break;
-            case 9: season = "Rainy";
-                break;
-            case 10: season = "Winter";
-                break;
-            case 11: season = "Winter";
-                break;
-            case 12: season = "Winter";
-                break;
-            default : season = "unknown";
-                break;
+            case 1,2,3 -> season = "Spring";
+            case 4,5,6 -> season = "Summer";
+            case 7,8,9 -> season = "Rainy";
+            case 10,11,12 -> season = "Winter";
+            default -> throw new IllegalArgumentException("unknown");//season = "unknown";
         }
 
         return season;
+    }
+
+    // Arrow label in Switch Statement: "expression" validity tests
+    static void arrowLabelTests(int month) {
+
+        int temp = 0;
+
+        switch (month) {
+            // Valid - must be valid "expression statements"
+            case 1 -> foo();
+            case 2 -> temp++; // ++temp; temp--, --temp
+            case 3 -> temp = 3;
+            case 4 -> new String("Dheeru");
+
+
+            // Invalid
+			/*case 5 -> int x; // declaration statement
+			case 6 -> temp;
+			case 7 -> 5;
+			case 8 -> if (month > 3) {} // control flow statement
+			case 9 -> break;
+            case 10 -> ;*/
+
+        }
+    }
+
+    static String foo(){
+        return "foo";
     }
 
 
@@ -382,6 +362,7 @@ class BasicsDemo {
         //String season = getSeason(Month.MARCH);
 
         System.out.println(season);
+
     }
 
     // String -> from Java 7
@@ -389,7 +370,7 @@ class BasicsDemo {
         String season = null;
 
         switch (month) {
-            case "January" :
+            case "January":
                 season = "Spring";
                 break;
             case "February":
