@@ -294,18 +294,15 @@ class BasicsDemo {
     // case L -> an expression | block of statements | throw statement
     // no fall through (safer & compact code)
     static String getSeason(int month) {
-
-        String season = null;
-
-        switch (month) {
-            case 1,2,3 -> season = "Spring";
-            case 4,5,6 -> season = "Summer";
-            case 7,8,9 -> season = "Rainy";
-            case 10,11,12 -> season = "Winter";
+        return switch (month) {
+            case 1,2,3 -> {
+                yield "Spring";
+            }
+            case 4,5,6 -> "Summer";
+            case 7,8,9 -> "Rainy";
+            case 10,11,12 -> "Winter";
             default -> throw new IllegalArgumentException("unknown");//season = "unknown";
-        }
-
-        return season;
+        };
     }
 
     // Arrow label in Switch Statement: "expression" validity tests
