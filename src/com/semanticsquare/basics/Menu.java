@@ -2,11 +2,36 @@ package com.semanticsquare.basics;
 
 public class Menu {
 
-    public static double getMenuItemPrice(int choice) {
+    public static double getMenuItemPrice(int choice, boolean largeDrink) {
         double itemPrice = 0.0;
 
         // Your logic
-        switch(choice) {
+        return switch(choice) {
+            case 0 -> 0.0;
+            case 1 -> 12.0;
+            case 2 -> 8.0;
+            case 3 -> 10.0;
+            case 4-> 15.0;
+            case 5-> 7.0;
+            case 6-> 9.0;
+            case 7-> {
+                if (largeDrink)
+                    yield  (3.0 + 1.0);
+                else
+                    yield 3.0;
+            }
+            case 8-> {
+                if (largeDrink)
+                    yield  (3.0 + 2.0);
+                else
+                    yield 3.0;
+            }
+            case 9-> 5.0;
+            case 10-> 6.0;
+            default-> 0.0;
+        };
+
+/*    switch(choice) {
             case 0:
                 itemPrice = 0.0;
                 break;
@@ -44,13 +69,20 @@ public class Menu {
                 itemPrice = 0.0;
         }
 
-        return itemPrice;
+        return itemPrice;*/
     }
 
     public static double applyCoupon(String couponCode) {
-        double discount = 0.0;
+//        double discount = 0.0;
         // Your logic
-        switch (couponCode) {
+        return switch (couponCode) {
+            case "SAVE4" -> 4.0;
+            case "HAPPYHOUR" -> 5.0;
+            case "SPECIAL3OFF" -> 3.0;
+            case "SUNDAY2OFF", "GOODSTUDENT" -> 2.0;
+            default -> 0.0;
+        };
+        /*switch (couponCode) {
             case "SAVE4":
                 discount = 4.0;
                 break;
@@ -69,6 +101,6 @@ public class Menu {
             default:
                 discount = 0.0;
         }
-        return discount;
+        return discount;*/
     }
 }
