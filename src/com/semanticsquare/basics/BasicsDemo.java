@@ -360,6 +360,24 @@ class BasicsDemo {
 
         System.out.println(season);
 
+        int min = min(9, 3);
+        System.out.println("min : " + min);
+
+        int[] iArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+//        for (int i = 0, j = 0; i < iArray.length ; System.out.println(iArray[i++]));
+
+//        for (int i = 0, j = iArray.length-1; i < j; i++, j--) {
+//        for (int i = 0, j = iArray.length-1, middle = iArray.length >>> 1; i < middle; i++, j--) {
+        for (int i = 0, j = iArray.length-1, middle = iArray.length / 2; i < middle; i++, j--) {
+            int temp = iArray[i];
+            iArray[i] = iArray[j];
+            iArray[j] = temp;
+        }
+
+        for(int i =0; i< iArray.length; i++) {
+            System.out.print(iArray[i] + " ");
+        }
     }
 
     // String -> from Java 7
@@ -456,6 +474,10 @@ class BasicsDemo {
         }
 
         return season;
+    }
+
+    static int min(int x, int y) {
+        return (x < y ? x : y);
     }
 
 }
