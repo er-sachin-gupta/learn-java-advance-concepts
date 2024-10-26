@@ -292,17 +292,28 @@ class BasicsDemo {
     // (b) variable type has to be byte/short/char/int/String
 
     // case L -> an expression | block of statements | throw statement
-    // no fall through (safer & compact code)
+    //       No fall through (safer & compact code)
+    // case L : {0 or more statements }
     static String getSeason(int month) {
+
         return switch (month) {
-            case 1,2,3 -> {
-                yield "Spring";
-            }
+            case 1,2,3 -> "Spring";
             case 4,5,6 -> "Summer";
             case 7,8,9 -> "Rainy";
             case 10,11,12 -> "Winter";
             default -> throw new IllegalArgumentException("unknown");//season = "unknown";
         };
+
+		/*
+		// Switch expression with traditional syntax
+		return switch (month) {
+			case 1,2,3 : yield "Spring";
+			case 4,5,6 : yield "Summer";
+			case 7,8,9 : yield "Rainy";
+			case 10,11,12 : yield "Winter";
+			default : throw new IllegalArgumentException("unknown");//season = "unknown";
+		};
+		*/
     }
 
     // Arrow label in Switch Statement: "expression" validity tests
@@ -330,7 +341,7 @@ class BasicsDemo {
     }
 
     static String foo(){
-        return "foo";
+        return "Spring";
     }
 
 
@@ -354,30 +365,80 @@ class BasicsDemo {
         //bitwiseOperators();
         //ifStatement();
 
-        String season = getSeason(3);
+        // String season = getSeason(3);
         //String season = getSeason("March"); // Java 7
-        //String season = getSeason(Month.MARCH);
+        //String season = getSeason(Month.CUCUMBER);
 
-        System.out.println(season);
+        // System.out.println(season);
 
-        int min = min(9, 3);
-        System.out.println("min : " + min);
+        //System.out.println(getDiscount("senior"));
+
+        // for-statements
 
         int[] iArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        for (int i = iArray.length-1; i >= 0; i--) {
+            System.out.print(iArray[i] + " ");
+        }
 
-//        for (int i = 0, j = 0; i < iArray.length ; System.out.println(iArray[i++]));
 
-//        for (int i = 0, j = iArray.length-1; i < j; i++, j--) {
-//        for (int i = 0, j = iArray.length-1, middle = iArray.length >>> 1; i < middle; i++, j--) {
-        for (int i = 0, j = iArray.length-1, middle = iArray.length / 2; i < middle; i++, j--) {
+        System.out.println("\n\nReversing Array ... ");
+        for (int i = 0, j = iArray.length-1, middle = iArray.length >>> 1; i < middle; i++, j--) {
             int temp = iArray[i];
             iArray[i] = iArray[j];
             iArray[j] = temp;
         }
 
-        for(int i =0; i< iArray.length; i++) {
+        for (int i = 0; i < iArray.length; i++) {
             System.out.print(iArray[i] + " ");
         }
+
+        System.out.println("\n\nCounting divisors ...");
+        int x = 24;
+        int divisorCount = 0;
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
+                System.out.print(i + " ");
+                divisorCount++;
+            }
+        }
+        System.out.println("\nDivisor Count: " + divisorCount);
+
+        // Nested for-statement: Below for each iteration of outer for statement, the entire inner for statement will be executed
+
+        System.out.println("\nDisplaying Student Grades ...");
+        int[][] studentGrades = {{76, 52, 69, 83, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
+
+        for (int i = 0; i < studentGrades.length; i++) {
+            System.out.print("\nDisplaying grades of students from class " + i + ": ");
+
+            int max = 0;
+
+            for (int j = 0; j < studentGrades[i].length; j++) {
+                if (studentGrades[i][j] > max) {
+                    max = studentGrades[i][j];
+                }
+                System.out.print(studentGrades[i][j] + " ");
+            }
+
+            System.out.println("\nmax: " + max);
+        }
+
+    }
+
+    // Switch expression with traditional case label
+    // General syntax:
+    //          case L: block of statements
+    // Same semantics as switch statements: fall through
+    // Confusing!!!
+    static double getDiscount(String customerType) {
+        double discount = 0.0;
+
+        return switch (customerType) {
+            case "supersenior": discount += 5.0;
+            case "senior": yield discount += 5.0; // statement
+            case "kid": yield discount += 5.0;
+            default : yield discount;
+        };
     }
 
     // String -> from Java 7
@@ -432,52 +493,58 @@ class BasicsDemo {
     enum Month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER}
 
     static String getSeason(Month month) {
-        String season = null;
+        //String season = null;
 
-        switch (month) {
-            case JANUARY :
-                season = "Spring";
-                break;
-            case FEBRUARY:
-                season = "Spring";
-                break;
-            case MARCH:
-                season = "Spring";
-                break;
-            case APRIL:
-                season = "Summer";
-                break;
-            case MAY:
-                season = "Summer";
-                break;
-            case JUNE:
-                season = "Summer";
-                break;
-            case JULY:
-                season = "Rainy";
-                break;
-            case AUGUST:
-                season = "Rainy";
-                break;
-            case SEPTEMBER:
-                season = "Rainy";
-                break;
-            case OCTOBER:
-                season = "Winter";
-                break;
-            case NOVEMBER:
-                season = "Winter";
-                break;
-            case DECEMBER:
-                season = "Winter";
-                break;
-        }
+		/*
+		switch (month) {
+			case JANUARY :
+			   season = "Spring";
+			   break;
+			case FEBRUARY:
+			   season = "Spring";
+			   break;
+			case MARCH:
+			   season = "Spring";
+			   break;
+			case APRIL:
+			   season = "Summer";
+			   break;
+			case MAY:
+			   season = "Summer";
+			   break;
+			case JUNE:
+			   season = "Summer";
+			   break;
+			case JULY:
+			   season = "Rainy";
+			   break;
+			case AUGUST:
+			   season = "Rainy";
+			   break;
+			case SEPTEMBER:
+			   season = "Rainy";
+			   break;
+			case OCTOBER:
+			   season = "Winter";
+			   break;
+			case NOVEMBER:
+			   season = "Winter";
+			   break;
+			case DECEMBER:
+			   season = "Winter";
+			   break;
+		}*/
+
+
+        String season = switch (month) {
+            case JANUARY,FEBRUARY,MARCH -> season = "Spring";
+            case APRIL,MAY,JUNE -> "Summer";
+            case JULY,AUGUST,SEPTEMBER -> "Rainy";
+            case OCTOBER,NOVEMBER,DECEMBER -> "Winter";
+        };
 
         return season;
-    }
 
-    static int min(int x, int y) {
-        return (x < y ? x : y);
     }
 
 }
