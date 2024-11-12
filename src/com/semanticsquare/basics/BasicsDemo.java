@@ -1,5 +1,7 @@
 package com.semanticsquare.basics;
 
+import java.util.Scanner;
+
 class BasicsDemo {
     // Adapted from http://www.ntu.edu.sg/home/ehchua/programming/java/J1a_Introduction.html
     static void print() {
@@ -255,11 +257,11 @@ class BasicsDemo {
         //System.out.println("d1 | d2: " + (d1 | d2));
     }
 
-
+    // Business logic for loan approval
     static boolean ifStatement() {
         boolean approved = false;
 
-        int age = 27;
+        int age = 65;//27;
         int salary = 60000;
         boolean hasBadCredit = false;
 
@@ -277,9 +279,9 @@ class BasicsDemo {
                 approved = true;
                 System.out.println("age > 55 && !hasBadCredit");
             }
+
             System.out.println("else block");
         }
-
 
         System.out.println("outside if");
         return approved;
@@ -342,87 +344,6 @@ class BasicsDemo {
 
     static String foo(){
         return "Spring";
-    }
-
-
-    public static void main(String[] args) {
-        // Language Basics 1
-        //print();
-        //primitives();
-        //typeCasting();
-        //arrays();
-        //threeDimensionalArrays();
-      	  /*varargsOverload(true, 1, 2, 3);
-     	    varargsOverload(true, 1, 2, 3, 4, 5, 6, 7, 8);
-            varargsOverload(true);*/
-
-        //preAndPost();
-        //compoundArithmeticAssignment();
-        //isOddOrEven(51);
-
-        //comparisonOperators();
-        //logicalOperators();
-        //bitwiseOperators();
-        //ifStatement();
-
-        // String season = getSeason(3);
-        //String season = getSeason("March"); // Java 7
-        //String season = getSeason(Month.CUCUMBER);
-
-        // System.out.println(season);
-
-        //System.out.println(getDiscount("senior"));
-
-        // for-statements
-
-        int[] iArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int i = iArray.length-1; i >= 0; i--) {
-            System.out.print(iArray[i] + " ");
-        }
-
-
-        System.out.println("\n\nReversing Array ... ");
-        for (int i = 0, j = iArray.length-1, middle = iArray.length >>> 1; i < middle; i++, j--) {
-            int temp = iArray[i];
-            iArray[i] = iArray[j];
-            iArray[j] = temp;
-        }
-
-        for (int i = 0; i < iArray.length; i++) {
-            System.out.print(iArray[i] + " ");
-        }
-
-        System.out.println("\n\nCounting divisors ...");
-        int x = 24;
-        int divisorCount = 0;
-        for (int i = 1; i <= x; i++) {
-            if (x % i == 0) {
-                System.out.print(i + " ");
-                divisorCount++;
-            }
-        }
-        System.out.println("\nDivisor Count: " + divisorCount);
-
-        // Nested for-statement: Below for each iteration of outer for statement, the entire inner for statement will be executed
-
-        System.out.println("\nDisplaying Student Grades ...");
-        int[][] studentGrades = {{76, 52, 69, 83, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
-
-        for (int i = 0; i < studentGrades.length; i++) {
-            System.out.print("\nDisplaying grades of students from class " + i + ": ");
-
-            int max = 0;
-
-            for (int j = 0; j < studentGrades[i].length; j++) {
-                if (studentGrades[i][j] > max) {
-                    max = studentGrades[i][j];
-                }
-                System.out.print(studentGrades[i][j] + " ");
-            }
-
-            System.out.println("\nmax: " + max);
-        }
-
     }
 
     // Switch expression with traditional case label
@@ -544,6 +465,222 @@ class BasicsDemo {
         };
 
         return season;
+
+    }
+
+    void forStatement() {
+        int[] iArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+        for (int i = 0, j = iArray.length-1, middle = iArray.length >>> 1; i < middle; i++, j--) {
+            int temp = iArray[i];
+            iArray[i] = iArray[j];
+            iArray[j] = temp;
+        }
+
+        for (int i = 0; i < iArray.length; i++) {
+            System.out.print(iArray[i] + " ");
+        }
+
+        System.out.println("\n\nCounting divisors");
+        int x = 24;
+        int count = 0;
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
+                System.out.print(i + " ");
+                count++;
+            }
+        }
+
+        System.out.println("\ndivisors count: " + count);
+
+        System.out.println("\nDisplaying Student Grades ...");
+        int[][] studentGrades = {{76, 52, 69, 83, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
+
+        for (int i = 0; i < studentGrades.length; i++) {
+            int max = 0;
+            System.out.println("\n\nDisplaying grades of section " + i);
+
+            for (int j = 0; j < studentGrades[i].length; j++) {
+                if (studentGrades[i][j] > max) {
+                    max = studentGrades[i][j];
+                }
+                System.out.print(studentGrades[i][j] + " ");
+            }
+
+            System.out.println("\nmax: " +  max);
+        }
+
+    }
+
+    private static void whileStatement() {
+
+        int[] iArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+		/*
+	  	for (int i = 0, j = iArray.length-1, middle = iArray.length >>> 1; i < middle; i++, j--) {
+			int temp = iArray[i];
+			iArray[i] = iArray[j];
+			iArray[j] = temp;
+	  	}
+
+      	for (int i : iArray) {
+			System.out.print(i + " ");
+		}			*/
+
+		/*
+		int i = 0, j = iArray.length-1, middle = iArray.length >>> 1;
+
+		while (i < middle) {
+			int temp = iArray[i];
+			iArray[i] = iArray[j];
+			iArray[j] = temp;
+
+			i++;
+			j--;
+	  	}
+
+		i = 0;
+      	while (i < iArray.length)  {
+			System.out.print(iArray[i++] + " ");
+		}
+			*/
+
+
+        // Reading from file
+	  /* try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("curriculum.txt"), "UTF-8"))) {
+
+			String line;
+
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+
+		} catch (IOException e) {}
+		*/
+
+
+        // Element removal during iteration
+		/*ArrayList<Integer> list = new ArrayList<>(List.of(29, -1, 39));
+		Iterator<Integer> iterator = list.iterator();
+
+		while (iterator.hasNext()) {
+
+			if (iterator.next() == -1) {
+				iterator.remove();
+			}
+
+		}
+
+		System.out.println(list);*/
+
+
+
+        // Infinite Loop (Rare in general. Common in Embedded Programming)
+		/*Path sourcePath = Paths.get("C:/javaindepth/src/com/semanticsquare/basics/download/curriculum.txt");
+        Path destinationPath = Paths.get("C:/javaindepth/src/com/semanticsquare/basics/index/curriculum.txt");
+
+        while (true) {
+
+            if (Files.exists(sourcePath)) {
+
+                try {
+                    Files.move(sourcePath, destinationPath);
+
+                    System.out.println("File copied successfully.");
+                } catch (IOException e) { }
+
+            } else {
+                System.out.println("Source file does not exist. ");
+            }
+
+			try {
+                Thread.sleep(2000); // suspends execution for 2 seconds
+            } catch (InterruptedException e) { }
+
+        }
+		*/
+        //int unReachable = 0;
+
+    }
+
+
+    public static void main(String[] args) {
+        // Language Basics 1
+        //print();
+        //primitives();
+        //typeCasting();
+        //arrays();
+        //threeDimensionalArrays();
+      	  /*varargsOverload(true, 1, 2, 3);
+     	    varargsOverload(true, 1, 2, 3, 4, 5, 6, 7, 8);
+            varargsOverload(true);*/
+
+        //preAndPost();
+        //compoundArithmeticAssignment();
+        //isOddOrEven(51);
+
+        //comparisonOperators();
+        //logicalOperators();
+        //bitwiseOperators();
+        //ifStatement();
+
+        //String season = getSeason(3);
+        //String season = getSeason("March"); // Java 7
+        //String season = getSeason(Month.CUCUMBER);
+
+        //System.out.println(season);
+
+        //System.out.println(getDiscount("senior"));
+
+        // forStatement();
+        // whileStatement();
+
+        doStatement();
+
+    }
+
+    private static void doStatement() {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+		/*
+		System.out.println("Menu:");
+		System.out.println("1. Pizza: $12");
+		System.out.println("2. Burger: $8");
+		System.out.println("3. Coffee: $3");
+		System.out.println("4. Soft Drink: $3");
+		System.out.println("5. Cake: $5");
+
+		System.out.print("Enter your choice: ");
+		choice = scanner.nextInt();
+
+		while (choice < 1 || choice > 5) {
+			System.out.println("Menu:");
+			System.out.println("1. Pizza: $12");
+			System.out.println("2. Burger: $8");
+			System.out.println("3. Coffee: $3");
+			System.out.println("4. Soft Drink: $3");
+			System.out.println("5. Cake: $5");
+
+			System.out.print("Enter your choice: ");
+			choice = scanner.nextInt();
+		}
+
+		System.out.print("Placing order ");*/
+
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Pizza: $12");
+            System.out.println("2. Burger: $8");
+            System.out.println("3. Coffee: $3");
+            System.out.println("4. Soft Drink: $3");
+            System.out.println("5. Cake: $5");
+
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+        } while (choice < 1 || choice > 5);
+
+        System.out.print("Placing order ");
 
     }
 
