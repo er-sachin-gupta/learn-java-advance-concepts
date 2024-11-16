@@ -1,6 +1,8 @@
 package com.semanticsquare.basics;
 
-import java.util.Scanner;
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
 
 class BasicsDemo {
     // Adapted from http://www.ntu.edu.sg/home/ehchua/programming/java/J1a_Introduction.html
@@ -261,7 +263,7 @@ class BasicsDemo {
     static boolean ifStatement() {
         boolean approved = false;
 
-        int age = 65;//27;
+        int age = 27;
         int salary = 60000;
         boolean hasBadCredit = false;
 
@@ -603,42 +605,6 @@ class BasicsDemo {
 
     }
 
-
-    public static void main(String[] args) {
-        // Language Basics 1
-        //print();
-        //primitives();
-        //typeCasting();
-        //arrays();
-        //threeDimensionalArrays();
-      	  /*varargsOverload(true, 1, 2, 3);
-     	    varargsOverload(true, 1, 2, 3, 4, 5, 6, 7, 8);
-            varargsOverload(true);*/
-
-        //preAndPost();
-        //compoundArithmeticAssignment();
-        //isOddOrEven(51);
-
-        //comparisonOperators();
-        //logicalOperators();
-        //bitwiseOperators();
-        //ifStatement();
-
-        //String season = getSeason(3);
-        //String season = getSeason("March"); // Java 7
-        //String season = getSeason(Month.CUCUMBER);
-
-        //System.out.println(season);
-
-        //System.out.println(getDiscount("senior"));
-
-        // forStatement();
-        // whileStatement();
-
-        doStatement();
-
-    }
-
     private static void doStatement() {
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -682,6 +648,62 @@ class BasicsDemo {
 
         System.out.print("Placing order ");
 
+    }
+
+    public static boolean containsPerfectScore(int[] studentScores) {
+        boolean perfectScore = false;
+
+        for (int score : studentScores) {
+            System.out.println("Current score: " + score);
+
+            if (score == 100) {
+                System.out.println("Perfect score!!!");
+                perfectScore = true;
+                break;
+            }
+
+            System.out.println("Not perfect score");
+        }
+
+        return perfectScore;
+    }
+
+
+    public static void main(String[] args) {
+        // Language Basics 1
+        //print();
+        //primitives();
+        //typeCasting();
+        //arrays();
+        //threeDimensionalArrays();
+      	  /*varargsOverload(true, 1, 2, 3);
+     	    varargsOverload(true, 1, 2, 3, 4, 5, 6, 7, 8);
+            varargsOverload(true);*/
+
+        //preAndPost();
+        //compoundArithmeticAssignment();
+        //isOddOrEven(51);
+
+        //comparisonOperators();
+        //logicalOperators();
+        //bitwiseOperators();
+        //ifStatement();
+
+        //String season = getSeason(3);
+        //String season = getSeason("March"); // Java 7
+        //String season = getSeason(Month.CUCUMBER);
+
+        //System.out.println(season);
+
+        //System.out.println(getDiscount("senior"));
+
+        // whileStatement();
+
+        // doStatement();
+
+        //int[][] studentScores = {{76, 52, 69, 100, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
+        int[] studentScores = {76, 52, 69, 100, 45, 90};
+        containsPerfectScore(studentScores);
     }
 
 }
