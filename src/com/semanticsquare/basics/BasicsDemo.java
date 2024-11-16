@@ -286,6 +286,7 @@ class BasicsDemo {
         }
 
         System.out.println("outside if");
+
         return approved;
     }
 
@@ -656,6 +657,7 @@ class BasicsDemo {
         for (int score : studentScores) {
             System.out.println("Current score: " + score);
 
+
             if (score == 100) {
                 System.out.println("Perfect score!!!");
                 perfectScore = true;
@@ -666,6 +668,72 @@ class BasicsDemo {
         }
 
         return perfectScore;
+    }
+
+    public static boolean containsPerfectScore(int[][] studentScores) {
+        boolean perfectScore = false;
+
+        outerfor : for (int[] scores : studentScores) {
+            System.out.println("\nProcessing new test scores");
+
+            for (int score : scores) {
+                System.out.println("Current score: " + score);
+
+                if (score == 100) {
+                    System.out.println("Perfect score!!!");
+                    perfectScore = true;
+                    break outerfor;
+                }
+
+                System.out.println("Not perfect score");
+            }
+        }
+
+        return perfectScore;
+    }
+
+    private static void labelStatementScope() {
+        int[] x = {1, 2};
+
+        // Multiple labels + Degree of nestedness doesn't matter
+        outermost : for (int i : x) {
+            outer : for (int j : x) {
+                for (int k : x) {
+                    break outermost;
+                }
+                break outer;
+            }
+            //break outer; // Invalid - out of scope
+        }
+
+        // Invalid - Out of scope
+        abc : for (int i : x) {}
+        //xyz : for (int j : x) { break abc; }
+
+        // Invalid - Duplicate label
+        abc : for (int i : x) {
+            //abc : for (int j : x) {}
+        }
+
+        //invalidLabel : int temp = 0; // Not a statement
+
+    }
+
+    private static boolean moreLabeledStatement() {
+        boolean flag = false;
+
+        labeledWhile : while (flag) {
+        }
+
+        labeledDo : do {
+            labeledBreak: break labeledDo;
+        } while (true);
+
+        // Expression statements (RAREST!)
+        reset : flag = false;
+        log : System.out.println(flag);
+
+        labeledReturn : return true;
     }
 
 
@@ -701,9 +769,9 @@ class BasicsDemo {
 
         // doStatement();
 
-        //int[][] studentScores = {{76, 52, 69, 100, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
-        int[] studentScores = {76, 52, 69, 100, 45, 90};
-        containsPerfectScore(studentScores);
+        int[][] studentScores = {{76, 52, 69, 100, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
+        //int[] studentScores = {76, 52, 69, 100, 45, 90};
+        //containsPerfectScore(studentScores);
     }
 
 }
