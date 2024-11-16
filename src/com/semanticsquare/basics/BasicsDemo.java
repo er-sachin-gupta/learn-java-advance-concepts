@@ -1,7 +1,5 @@
 package com.semanticsquare.basics;
 
-import java.io.*;
-import java.nio.file.*;
 import java.util.*;
 
 class BasicsDemo {
@@ -769,9 +767,67 @@ class BasicsDemo {
 
         // doStatement();
 
-        int[][] studentScores = {{76, 52, 69, 100, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
+//        int[][] studentScores = {{76, 52, 69, 100, 45, 90}, {22, 71, 67, 69, 40}, {53, 87, 91, 25}};
         //int[] studentScores = {76, 52, 69, 100, 45, 90};
         //containsPerfectScore(studentScores);
+
+        // continue statement demo
+        /*int[] studentScores = {76, 52, -1, 100, 45, -1};
+        double average = computeAverageScore(studentScores);
+        System.out.println("\nAverage: " + average);*/
+
+        // labeled continue demo
+        int[][] studentScores = {
+                {76, -1, 52},
+                {90, 100, 80},
+                {75, 85, 95}
+        };
+
+        double[] averageScores = computeAverageScore(studentScores);
+        System.out.println("\nPrinting average scores");
+
+        for(double avgScore: averageScores) {
+            System.out.println(avgScore);
+        }
+    }
+
+    private static double[] computeAverageScore(int[][] studentScores) {
+        double[] average = new double[studentScores.length];
+        int index = 0;
+        outerfor: for(int[] scores: studentScores) {
+            System.out.println("\nProcessing scores of new student");
+            int sum =0, count=0;
+            for(int score: scores) {
+                System.out.println("Current score:" + score);
+                if (score == -1) {
+                    index++;
+                    System.out.println("Cheated");
+                    continue outerfor;
+                }
+                sum += score;
+                count++;
+                System.out.println("Sum: " + sum);
+            }
+            average[index++] = (double)sum/count;
+        }
+        return average;
+    }
+
+    private static double computeAverageScore(int[] studentScores) {
+        double average = 0.0;
+        int sum=0, count=0;
+        for(int score: studentScores) {
+            System.out.println("Current Score: " + score);
+            if (score == -1) {
+                System.out.println("Absent");
+                continue;
+            }
+            sum += score;
+            count++;
+            System.out.println("Sum: " + sum);
+        }
+        average = (double)sum/count;
+        return  average;
     }
 
 }
