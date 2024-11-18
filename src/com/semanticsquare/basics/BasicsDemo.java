@@ -2,7 +2,7 @@ package com.semanticsquare.basics;
 
 import java.util.*;
 
-class BasicsDemo {
+public class BasicsDemo {
     // Adapted from http://www.ntu.edu.sg/home/ehchua/programming/java/J1a_Introduction.html
     static void print() {
         System.out.println("\n\nInside print ...");
@@ -320,7 +320,7 @@ class BasicsDemo {
     }
 
     // Arrow label in Switch Statement: "expression" validity tests
-    static void arrowLabelTests(int month) {
+   /* static void arrowLabelTests(int month) {
 
         int temp = 0;
 
@@ -333,19 +333,19 @@ class BasicsDemo {
 
 
             // Invalid
-			/*case 5 -> int x; // declaration statement
+			*//*case 5 -> int x; // declaration statement
 			case 6 -> temp;
 			case 7 -> 5;
 			case 8 -> if (month > 3) {} // control flow statement
 			case 9 -> break;
-            case 10 -> ;*/
+            case 10 -> ;*//*
 
         }
-    }
+    }*/
 
-    static String foo(){
+/*    static String foo(){
         return "Spring";
-    }
+    }*/
 
     // Switch expression with traditional case label
     // General syntax:
@@ -828,6 +828,10 @@ class BasicsDemo {
         }
         average = (double)sum/count;
         return  average;
+    }
+
+    public void foo() {
+        System.out.println("Inside foo ...");
     }
 
 }
