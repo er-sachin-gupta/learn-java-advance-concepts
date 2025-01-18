@@ -260,6 +260,18 @@ public class BasicsDemo {
         System.out.println("s1 == \"hel\" + s6: " + (s1 == "hel" + s6));
     }
 
+    public BasicsDemo() {
+        System.out.println("Inside no arg constructor...");
+    }
+
+    public BasicsDemo(int id) {
+        System.out.println("Inside  constructor with a parameter.");
+    }
+
+    {
+        System.out.println("Inside Instance initializer ...");
+    }
+
     public static void main(String[] args) {
         // Language Basics 1
         //print();
@@ -278,6 +290,60 @@ public class BasicsDemo {
         // import demo
         // package creation demo
 //        stringExamples();
-        stringPool();
+//        stringPool();
+//        mathDemo();
+
+        BasicsDemo bd = new BasicsDemo(1);
+    }
+
+    private static void mathDemo() {
+        //random
+        double random = Math.random();
+        int winner = (int)(random * 100) + 1;
+        System.out.println(random);
+        System.out.println(winner);
+
+        //round
+        long distance1 = Math.round(24.45);
+        int distance2 = Math.round(24.5f);
+
+        System.out.println(distance1);
+        System.out.println(distance2);
+
+
+        // ceil
+        double ceil1 = Math.ceil(24.01);
+        double ceil2 = Math.ceil(25.0);
+
+        System.out.println(ceil1);
+        System.out.println(ceil2);
+
+        //floor
+        double floor1 = Math.floor(24.45);
+        double floor2 = Math.floor(25.0);
+        System.out.println(floor1);
+        System.out.println(floor2);
+
+        double max = Math.max(24.45, 24.5);
+        System.out.println(max);
+
+        double min = Math.min(24.45, 24.5);
+        System.out.println(min);
+
+        double abs = Math.abs(-24.45);
+        System.out.println(abs);
+
+        double pow = Math.pow(2.0, 4.0);
+        System.out.println(pow);
+
+        double nan = 0.0/0.0;
+        double sqrt = Math.sqrt(nan);
+        System.out.println(sqrt);
+
+        double idf = Math.log(100/8);
+        System.out.println(idf);
+
+//        Math math = new Math();
+
     }
 }
