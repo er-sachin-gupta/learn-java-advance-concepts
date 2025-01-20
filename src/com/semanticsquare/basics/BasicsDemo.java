@@ -148,10 +148,11 @@ public class BasicsDemo {
     static void switchExample() {
         System.out.println("\nInside switchExample ...");
         int month = 3;
+        final byte month2 = 2;
         switch (month) {
             case 1: System.out.println("January");
                 break;
-            case 2: System.out.println("February");
+            case month2: System.out.println("February");
                 break;
             case 3: System.out.println("March");
                 break;
@@ -284,7 +285,7 @@ public class BasicsDemo {
       varargsOverload(true);*/
         //charTypePromotion();
         //bitwiseOperators();
-        //switchExample();
+        switchExample();
         //labeledBreak();
         //labeledContinue();
         // import demo

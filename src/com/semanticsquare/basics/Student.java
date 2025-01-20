@@ -26,7 +26,8 @@ package com.semanticsquare.basics;
 class Student {
     static int studentCount;
 
-    int id;
+    private static int idInitializer = 1000;
+    private final int id;
     String name;
     String gender;
     int age;
@@ -38,14 +39,15 @@ class Student {
     double tuitionFees = 12000.0;
     double internationalFees = 5000.0;
 
-    Student(int id, String name, String gender, int age, long phone, double gpa,
+    Student(String name, String gender, int age, long phone, double gpa,
             char degree) {
-        this(id, name, gender, age, phone, gpa, degree, false);
+        this(name, gender, age, phone, gpa, degree, false);
     }
 
-    Student(int id, String name, String gender, int age, long phone, double gpa,
+    Student(String name, String gender, int age, long phone, double gpa,
             char degree, boolean international) {
-        this.id = id;
+        id = ++idInitializer;
+//        this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -55,7 +57,7 @@ class Student {
         this.international = international;
 
         studentCount = studentCount + 1;
-        int nextId = id + 1;
+//        int nextId = id + 1;
 
         if (international) {
             tuitionFees = tuitionFees + internationalFees;
@@ -75,6 +77,7 @@ class Student {
     }
 
     Student() {
+        id = ++idInitializer;
     }
 
     boolean updateProfile(String name) {
