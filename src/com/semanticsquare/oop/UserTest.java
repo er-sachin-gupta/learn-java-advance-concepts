@@ -6,6 +6,17 @@ public class UserTest {
         u.printUserType();
     }
 
+    public void approveReview(Staff s) {
+//        s.approveReview();
+//        ((Editor)s).approveReview();
+        if (s instanceof Editor) {
+            ((Editor) s).approveReview();
+        } else {
+            System.out.println("Invalid object passed !!");
+        }
+
+    }
+
     public static void main(String[] args) {
         User user = new User();
         User staff = new Staff();
@@ -18,7 +29,10 @@ public class UserTest {
 
 //        editor.approveReview();   /*will not work compiler is looking at reference type not assigning object type*/
 //        editor.postAReview();
-        editor.saveWebLink();
+//        editor.saveWebLink();
+
+//        ut.approveReview(new Staff());
+        ut.approveReview(new Editor());
     }
 
 }
